@@ -47,7 +47,6 @@
             z-index: -1;
         }
 
-        /* Header & Navigation */
         header {
             position: fixed;
             top: 0;
@@ -95,7 +94,6 @@
             color: #00d4ff;
         }
 
-        /* Hero Section with 3D Avatar */
         .hero {
             height: 100vh;
             display: flex;
@@ -169,34 +167,43 @@
             color: white;
         }
 
-        /* 3D Avatar Container */
         #avatar-container {
             flex: 1;
             height: 600px;
             position: relative;
         }
 
-        /* Tech Network Decoration */
+        /* Tech Network Decoration - Enhanced */
         .tech-network {
             position: fixed;
-            top: 80px;
-            left: 20px;
-            width: 500px;
-            height: 500px;
-            z-index: 5;
-            opacity: 0.4;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.7;
             pointer-events: none;
         }
 
-        @media (max-width: 768px) {
-            .tech-network {
-                width: 300px;
-                height: 300px;
-                opacity: 0.3;
-            }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
         }
 
-        /* Sections */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .network-node {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .network-orbit {
+            animation: rotate 60s linear infinite;
+            transform-origin: center;
+        }
+
         section {
             padding: 5rem 2rem;
             max-width: 1400px;
@@ -212,7 +219,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -254,7 +260,6 @@
             line-height: 1.6;
         }
 
-        /* Projects Grid */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -325,7 +330,6 @@
             border: 1px solid rgba(0, 212, 255, 0.3);
         }
 
-        /* Contact Section */
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -366,7 +370,151 @@
             color: #cbd5e0;
         }
 
-        /* Footer */
+        .cv-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .cv-modal.active {
+            display: flex;
+        }
+
+        .cv-modal-content {
+            background: rgba(10, 20, 40, 0.95);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .cv-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .cv-modal-header h3 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+        }
+
+        .cv-modal-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cv-modal-btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .cv-modal-btn.download {
+            background: linear-gradient(135deg, #00d4ff 0%, #0096ff 100%);
+            color: white;
+        }
+
+        .cv-modal-btn.download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .cv-modal-btn.close {
+            background: transparent;
+            border: 2px solid #ff4444;
+            color: #ff4444;
+        }
+
+        .cv-modal-btn.close:hover {
+            background: #ff4444;
+            color: white;
+        }
+
+        .cv-preview-container {
+            flex: 1;
+            overflow: auto;
+            padding: 2rem;
+            background: #fff;
+            color: #000;
+        }
+
+        .cv-preview-container h1 {
+            color: #0096ff;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-preview-container h2 {
+            color: #00d4ff;
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 0.3rem;
+        }
+
+        .cv-preview-container h3 {
+            color: #0096ff;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-preview-container p {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-preview-container ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cv-preview-container li {
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .cv-info-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cv-contact-info {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .cv-contact-info p {
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
         footer {
             text-align: center;
             padding: 2rem;
@@ -375,7 +523,6 @@
             border-top: 1px solid rgba(0, 212, 255, 0.1);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
@@ -391,17 +538,14 @@
 
             .hero-content h1 {
                 font-size: 2rem;
-                margin-bottom: 0.8rem;
             }
 
             .hero-content h2 {
                 font-size: 1.3rem;
-                margin-bottom: 1rem;
             }
 
             .hero-content p {
                 font-size: 1rem;
-                margin-bottom: 1.5rem;
             }
 
             .cta-buttons {
@@ -411,8 +555,6 @@
             }
 
             .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
                 width: 100%;
                 max-width: 280px;
                 margin: 0 auto;
@@ -421,7 +563,6 @@
             #avatar-container {
                 height: 350px;
                 width: 100%;
-                margin-top: 1rem;
             }
 
             .nav-links {
@@ -432,85 +573,60 @@
                 padding: 3rem 1.5rem;
             }
 
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .skills-grid {
+            .skills-grid, .projects-grid, .contact-info {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .skill-card {
-                padding: 1.5rem;
-            }
-
-            .skill-card h3 {
-                font-size: 1.3rem;
-            }
-
-            .skill-icon {
-                width: 35px;
-                height: 35px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .project-card {
-                max-width: 100%;
-            }
-
-            .project-image {
-                height: 200px;
-            }
-
-            .project-icon {
-                width: 100px;
-                height: 100px;
-            }
-
-            .project-content {
-                padding: 1.5rem;
-            }
-
-            .project-content h3 {
-                font-size: 1.3rem;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .contact-card {
-                padding: 1.5rem;
             }
 
             .tech-network {
-                width: 250px;
-                height: 250px;
-                top: 70px;
-                left: 10px;
-                opacity: 0.25;
+                opacity: 0.5;
+            }
+
+            .cv-modal {
+                padding: 1rem;
+            }
+
+            .cv-modal-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cv-modal-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cv-modal-btn {
+                width: 100%;
+            }
+
+            .cv-info-section {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Tech Network Decoration -->
-    <svg class="tech-network" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Enhanced Tech Network Decoration -->
+    <svg class="tech-network" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
         <defs>
             <linearGradient id="techGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.8" />
-                <stop offset="50%" style="stop-color:#0096ff;stop-opacity:0.6" />
-                <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0.4" />
+                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.9" />
+                <stop offset="50%" style="stop-color:#0096ff;stop-opacity:0.7" />
+                <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0.5" />
+            </linearGradient>
+            <linearGradient id="techGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#0096ff;stop-opacity:0.8" />
+                <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0.6" />
             </linearGradient>
             <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+            <filter id="glow-strong">
+                <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
                 <feMerge>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
@@ -518,40 +634,139 @@
             </filter>
         </defs>
         
-        <!-- Central Globe -->
-        <circle cx="200" cy="200" r="80" fill="none" stroke="url(#techGrad)" stroke-width="2" opacity="0.5"/>
-        <circle cx="200" cy="200" r="60" fill="none" stroke="url(#techGrad)" stroke-width="1.5" opacity="0.4"/>
-        <ellipse cx="200" cy="200" rx="80" ry="30" fill="none" stroke="url(#techGrad)" stroke-width="1.5" opacity="0.4"/>
-        <ellipse cx="200" cy="200" rx="30" ry="80" fill="none" stroke="url(#techGrad)" stroke-width="1.5" opacity="0.4"/>
+        <!-- Left side network cluster -->
+        <g class="network-orbit">
+            <!-- Central hub 1 -->
+            <circle cx="300" cy="300" r="120" fill="none" stroke="url(#techGrad)" stroke-width="3" opacity="0.6"/>
+            <circle cx="300" cy="300" r="90" fill="none" stroke="url(#techGrad)" stroke-width="2" opacity="0.5"/>
+            <circle cx="300" cy="300" r="60" fill="none" stroke="url(#techGrad)" stroke-width="2" opacity="0.4"/>
+            
+            <!-- Orbital rings -->
+            <ellipse cx="300" cy="300" rx="120" ry="40" fill="none" stroke="url(#techGrad2)" stroke-width="2" opacity="0.5"/>
+            <ellipse cx="300" cy="300" rx="40" ry="120" fill="none" stroke="url(#techGrad2)" stroke-width="2" opacity="0.5"/>
+            <ellipse cx="300" cy="300" rx="100" ry="100" fill="none" stroke="url(#techGrad)" stroke-width="1.5" opacity="0.4" transform="rotate(45 300 300)"/>
+            
+            <!-- Network nodes -->
+            <circle class="network-node" cx="180" cy="180" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="420" cy="180" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="460" cy="300" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="420" cy="420" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="180" cy="420" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="140" cy="300" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="300" cy="140" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="300" cy="460" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            
+            <!-- Additional small nodes -->
+            <circle class="network-node" cx="240" cy="200" r="8" fill="url(#techGrad2)" filter="url(#glow)" opacity="0.8"/>
+            <circle class="network-node" cx="360" cy="200" r="8" fill="url(#techGrad2)" filter="url(#glow)" opacity="0.8"/>
+            <circle class="network-node" cx="400" cy="260" r="8" fill="url(#techGrad2)" filter="url(#glow)" opacity="0.8"/>
+            <circle class="network-node" cx="400" cy="340" r="8" fill="url(#techGrad2)" filter="url(#glow)" opacity="0.8"/>
+            <circle class="network-node" cx="360" cy="400" r="8" fill="url(#techGrad2)" filter="url(#glow)" opacity="0.8"/>
+            <circle class="network-node" cx="240" cy="400" r="8" fill="url(#techGrad2)" filter="url(#glow)" opacity="0.8"/>
+            <circle class="network-node" cx="200" cy="340" r="8" fill="url(#techGrad2)" filter="url(#glow)" opacity="0.8"/>
+            <circle class="network-node" cx="200" cy="260" r="8" fill="url(#techGrad2)" filter="url(#glow)" opacity="0.8"/>
+            
+            <!-- Connection lines -->
+            <line x1="300" y1="300" x2="180" y2="180" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="300" y1="300" x2="420" y2="180" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="300" y1="300" x2="460" y2="300" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="300" y1="300" x2="420" y2="420" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="300" y1="300" x2="180" y2="420" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="300" y1="300" x2="140" y2="300" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="300" y1="300" x2="300" y2="140" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="300" y1="300" x2="300" y2="460" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            
+            <!-- Secondary connections -->
+            <line x1="180" y1="180" x2="140" y2="300" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+            <line x1="420" y1="180" x2="460" y2="300" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+            <line x1="180" y1="420" x2="140" y2="300" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+            <line x1="420" y1="420" x2="460" y2="300" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+            <line x1="180" y1="180" x2="300" y2="140" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+            <line x1="420" y1="180" x2="300" y2="140" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+            <line x1="180" y1="420" x2="300" y2="460" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+            <line x1="420" y1="420" x2="300" y2="460" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+            
+            <!-- Connections to small nodes -->
+            <line x1="300" y1="300" x2="240" y2="200" stroke="url(#techGrad2)" stroke-width="1" opacity="0.3"/>
+            <line x1="300" y1="300" x2="360" y2="200" stroke="url(#techGrad2)" stroke-width="1" opacity="0.3"/>
+            <line x1="300" y1="300" x2="400" y2="260" stroke="url(#techGrad2)" stroke-width="1" opacity="0.3"/>
+            <line x1="300" y1="300" x2="400" y2="340" stroke="url(#techGrad2)" stroke-width="1" opacity="0.3"/>
+        </g>
         
-        <!-- Network Nodes -->
-        <circle cx="120" cy="120" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
-        <circle cx="280" cy="120" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
-        <circle cx="320" cy="200" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
-        <circle cx="280" cy="280" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
-        <circle cx="120" cy="280" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
-        <circle cx="80" cy="200" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
-        <circle cx="200" cy="80" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
-        <circle cx="200" cy="320" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
+        <!-- Right side network cluster -->
+        <g class="network-orbit" style="animation-direction: reverse;">
+            <!-- Central hub 2 -->
+            <circle cx="1620" cy="540" r="100" fill="none" stroke="url(#techGrad)" stroke-width="3" opacity="0.6"/>
+            <circle cx="1620" cy="540" r="75" fill="none" stroke="url(#techGrad)" stroke-width="2" opacity="0.5"/>
+            <circle cx="1620" cy="540" r="50" fill="none" stroke="url(#techGrad)" stroke-width="2" opacity="0.4"/>
+            
+            <!-- Orbital rings -->
+            <ellipse cx="1620" cy="540" rx="100" ry="35" fill="none" stroke="url(#techGrad2)" stroke-width="2" opacity="0.5"/>
+            <ellipse cx="1620" cy="540" rx="35" ry="100" fill="none" stroke="url(#techGrad2)" stroke-width="2" opacity="0.5"/>
+            
+            <!-- Network nodes -->
+            <circle class="network-node" cx="1520" cy="440" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="1720" cy="440" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="1760" cy="540" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="1720" cy="640" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="1520" cy="640" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            <circle class="network-node" cx="1480" cy="540" r="12" fill="url(#techGrad)" filter="url(#glow-strong)"/>
+            
+            <!-- Connection lines -->
+            <line x1="1620" y1="540" x2="1520" y2="440" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="1620" y1="540" x2="1720" y2="440" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="1620" y1="540" x2="1760" y2="540" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="1620" y1="540" x2="1720" y2="640" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="1620" y1="540" x2="1520" y2="640" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+            <line x1="1620" y1="540" x2="1480" y2="540" stroke="url(#techGrad)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+        </g>
         
-        <!-- Connection Lines -->
-        <line x1="200" y1="200" x2="120" y2="120" stroke="url(#techGrad)" stroke-width="1" opacity="0.5"/>
-        <line x1="200" y1="200" x2="280" y2="120" stroke="url(#techGrad)" stroke-width="1" opacity="0.5"/>
-        <line x1="200" y1="200" x2="320" y2="200" stroke="url(#techGrad)" stroke-width="1" opacity="0.5"/>
-        <line x1="200" y1="200" x2="280" y2="280" stroke="url(#techGrad)" stroke-width="1" opacity="0.5"/>
-        <line x1="200" y1="200" x2="120" y2="280" stroke="url(#techGrad)" stroke-width="1" opacity="0.5"/>
-        <line x1="200" y1="200" x2="80" y2="200" stroke="url(#techGrad)" stroke-width="1" opacity="0.5"/>
-        <line x1="200" y1="200" x2="200" y2="80" stroke="url(#techGrad)" stroke-width="1" opacity="0.5"/>
-        <line x1="200" y1="200" x2="200" y2="320" stroke="url(#techGrad)" stroke-width="1" opacity="0.5"/>
+        <!-- Bottom network cluster -->
+        <g>
+            <!-- Small hub -->
+            <circle cx="960" cy="900" r="80" fill="none" stroke="url(#techGrad)" stroke-width="2" opacity="0.5"/>
+            <circle cx="960" cy="900" r="50" fill="none" stroke="url(#techGrad2)" stroke-width="1.5" opacity="0.4"/>
+            
+            <!-- Network nodes -->
+            <circle class="network-node" cx="880" cy="850" r="10" fill="url(#techGrad)" filter="url(#glow)"/>
+            <circle class="network-node" cx="1040" cy="850" r="10" fill="url(#techGrad)" filter="url(#glow)"/>
+            <circle class="network-node" cx="1040" cy="950" r="10" fill="url(#techGrad)" filter="url(#glow)"/>
+            <circle class="network-node" cx="880" cy="950" r="10" fill="url(#techGrad)" filter="url(#glow)"/>
+            
+            <!-- Connection lines -->
+            <line x1="960" y1="900" x2="880" y2="850" stroke="url(#techGrad)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="960" y1="900" x2="1040" y2="850" stroke="url(#techGrad)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="960" y1="900" x2="1040" y2="950" stroke="url(#techGrad)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="960" y1="900" x2="880" y2="950" stroke="url(#techGrad)" stroke-width="1.5" opacity="0.5"/>
+        </g>
         
-        <!-- Secondary connections -->
-        <line x1="120" y1="120" x2="80" y2="200" stroke="url(#techGrad)" stroke-width="0.5" opacity="0.3"/>
-        <line x1="280" y1="120" x2="320" y2="200" stroke="url(#techGrad)" stroke-width="0.5" opacity="0.3"/>
-        <line x1="120" y1="280" x2="80" y2="200" stroke="url(#techGrad)" stroke-width="0.5" opacity="0.3"/>
-        <line x1="280" y1="280" x2="320" y2="200" stroke="url(#techGrad)" stroke-width="0.5" opacity="0.3"/>
+        <!-- Top right decorative elements -->
+        <g>
+            <circle cx="1500" cy="150" r="60" fill="none" stroke="url(#techGrad2)" stroke-width="2" opacity="0.4"/>
+            <circle class="network-node" cx="1450" cy="120" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
+            <circle class="network-node" cx="1550" cy="120" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
+            <circle class="network-node" cx="1550" cy="180" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
+            <circle class="network-node" cx="1450" cy="180" r="8" fill="url(#techGrad)" filter="url(#glow)"/>
+            
+            <line x1="1500" y1="150" x2="1450" y2="120" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+            <line x1="1500" y1="150" x2="1550" y2="120" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+            <line x1="1500" y1="150" x2="1550" y2="180" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+            <line x1="1500" y1="150" x2="1450" y2="180" stroke="url(#techGrad2)" stroke-width="1" opacity="0.4"/>
+        </g>
+        
+        <!-- Connecting lines between clusters -->
+        <line x1="460" y1="300" x2="880" y2="850" stroke="url(#techGrad)" stroke-width="1" opacity="0.2" stroke-dasharray="10,10"/>
+        <line x1="420" y1="420" x2="1480" y2="540" stroke="url(#techGrad)" stroke-width="1" opacity="0.2" stroke-dasharray="10,10"/>
+        <line x1="1040" y1="850" x2="1520" y2="640" stroke="url(#techGrad)" stroke-width="1" opacity="0.2" stroke-dasharray="10,10"/>
+        
+        <!-- Floating data particles -->
+        <circle class="network-node" cx="700" cy="200" r="5" fill="url(#techGrad)" filter="url(#glow)" opacity="0.6"/>
+        <circle class="network-node" cx="1200" cy="300" r="5" fill="url(#techGrad)" filter="url(#glow)" opacity="0.6"/>
+        <circle class="network-node" cx="800" cy="600" r="5" fill="url(#techGrad)" filter="url(#glow)" opacity="0.6"/>
+        <circle class="network-node" cx="1400" cy="700" r="5" fill="url(#techGrad)" filter="url(#glow)" opacity="0.6"/>
+        <circle class="network-node" cx="600" cy="500" r="5" fill="url(#techGrad)" filter="url(#glow)" opacity="0.6"/>
     </svg>
 
-    <!-- Header -->
     <header>
         <nav>
             <div class="logo">TM</div>
@@ -564,7 +779,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section with 3D Avatar -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Tiziano Mazzetti</h1>
@@ -578,24 +792,14 @@
         <div id="avatar-container"></div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills">
         <h2 class="section-title">Le Mie Competenze</h2>
         <div class="skills-grid">
             <div class="skill-card">
                 <h3>
-                    <svg class="skill-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="skillGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0096ff;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="100" cy="80" r="35" fill="url(#skillGrad1)"/>
-                        <ellipse cx="100" cy="145" rx="45" ry="35" fill="url(#skillGrad1)"/>
-                        <circle cx="85" cy="75" r="5" fill="#0a0e27"/>
-                        <circle cx="115" cy="75" r="5" fill="#0a0e27"/>
-                        <path d="M 85 90 Q 100 100 115 90" stroke="#0a0e27" stroke-width="3" fill="none"/>
+                    <svg class="skill-icon" viewBox="0 0 200 200">
+                        <circle cx="100" cy="80" r="35" fill="#00d4ff"/>
+                        <ellipse cx="100" cy="145" rx="45" ry="35" fill="#00d4ff"/>
                     </svg>
                     Avatar AI
                 </h3>
@@ -603,18 +807,9 @@
             </div>
             <div class="skill-card">
                 <h3>
-                    <svg class="skill-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="skillGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0096ff;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="100" cy="100" r="50" fill="url(#skillGrad2)" opacity="0.3"/>
-                        <circle cx="100" cy="100" r="35" fill="url(#skillGrad2)" opacity="0.5"/>
-                        <circle cx="100" cy="100" r="20" fill="url(#skillGrad2)"/>
-                        <rect x="50" y="95" width="100" height="10" rx="5" fill="#0a0e27" opacity="0.6"/>
-                        <rect x="95" y="50" width="10" height="100" rx="5" fill="#0a0e27" opacity="0.6"/>
+                    <svg class="skill-icon" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="50" fill="#00d4ff" opacity="0.3"/>
+                        <circle cx="100" cy="100" r="20" fill="#00d4ff"/>
                     </svg>
                     Ambienti Metaverso
                 </h3>
@@ -622,18 +817,8 @@
             </div>
             <div class="skill-card">
                 <h3>
-                    <svg class="skill-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="skillGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0096ff;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="60" y="40" width="80" height="100" rx="8" fill="url(#skillGrad3)"/>
-                        <rect x="70" y="60" width="60" height="5" rx="2" fill="#0a0e27" opacity="0.4"/>
-                        <rect x="70" y="75" width="60" height="5" rx="2" fill="#0a0e27" opacity="0.4"/>
-                        <rect x="70" y="90" width="40" height="5" rx="2" fill="#0a0e27" opacity="0.4"/>
-                        <polygon points="100,110 85,130 115,130" fill="#0a0e27" opacity="0.5"/>
+                    <svg class="skill-icon" viewBox="0 0 200 200">
+                        <rect x="60" y="40" width="80" height="100" rx="8" fill="#00d4ff"/>
                     </svg>
                     Formazione
                 </h3>
@@ -641,20 +826,8 @@
             </div>
             <div class="skill-card">
                 <h3>
-                    <svg class="skill-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="skillGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0096ff;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="100" cy="100" r="60" fill="url(#skillGrad4)"/>
-                        <path d="M 70 85 Q 75 75 85 80 T 100 85 T 115 80 Q 125 75 130 85" stroke="#0a0e27" stroke-width="4" fill="none"/>
-                        <circle cx="80" cy="95" r="4" fill="#0a0e27"/>
-                        <circle cx="120" cy="95" r="4" fill="#0a0e27"/>
-                        <path d="M 75 115 Q 100 130 125 115" stroke="#0a0e27" stroke-width="3" fill="none"/>
-                        <path d="M 55 70 Q 50 60 60 55" stroke="#00d4ff" stroke-width="3" fill="none"/>
-                        <path d="M 145 70 Q 150 60 140 55" stroke="#00d4ff" stroke-width="3" fill="none"/>
+                    <svg class="skill-icon" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="60" fill="#00d4ff"/>
                     </svg>
                     AI Applications
                 </h3>
@@ -662,19 +835,8 @@
             </div>
             <div class="skill-card">
                 <h3>
-                    <svg class="skill-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="skillGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0096ff;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="50" y="50" width="100" height="100" rx="10" fill="url(#skillGrad5)"/>
-                        <rect x="70" y="70" width="25" height="25" rx="3" fill="#0a0e27" opacity="0.4"/>
-                        <rect x="105" y="70" width="25" height="25" rx="3" fill="#0a0e27" opacity="0.4"/>
-                        <rect x="70" y="105" width="25" height="25" rx="3" fill="#0a0e27" opacity="0.4"/>
-                        <rect x="105" y="105" width="25" height="25" rx="3" fill="#0a0e27" opacity="0.4"/>
-                        <circle cx="100" cy="60" r="8" fill="#00d4ff"/>
+                    <svg class="skill-icon" viewBox="0 0 200 200">
+                        <rect x="50" y="50" width="100" height="100" rx="10" fill="#00d4ff"/>
                     </svg>
                     Modellazione 3D
                 </h3>
@@ -683,25 +845,13 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
         <h2 class="section-title">I Miei Progetti</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-image">
-                    <svg class="project-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0096ff;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="40" y="60" width="120" height="100" rx="8" fill="url(#grad1)"/>
-                        <rect x="50" y="70" width="100" height="60" rx="4" fill="#0a0e27" opacity="0.5"/>
-                        <rect x="60" y="80" width="80" height="40" rx="2" fill="url(#grad1)" opacity="0.3"/>
-                        <circle cx="70" cy="95" r="5" fill="#00d4ff"/>
-                        <circle cx="130" cy="95" r="5" fill="#00d4ff"/>
-                        <path d="M 85 105 Q 100 115 115 105" stroke="#00d4ff" stroke-width="3" fill="none"/>
+                    <svg class="project-icon" viewBox="0 0 200 200">
+                        <rect x="40" y="60" width="120" height="100" rx="8" fill="#00d4ff"/>
                     </svg>
                 </div>
                 <div class="project-content">
@@ -717,18 +867,9 @@
 
             <div class="project-card">
                 <div class="project-image">
-                    <svg class="project-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0096ff;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="100" cy="80" r="35" fill="url(#grad2)"/>
-                        <ellipse cx="100" cy="145" rx="45" ry="35" fill="url(#grad2)"/>
-                        <circle cx="85" cy="75" r="5" fill="#0a0e27"/>
-                        <circle cx="115" cy="75" r="5" fill="#0a0e27"/>
-                        <path d="M 85 90 Q 100 100 115 90" stroke="#0a0e27" stroke-width="3" fill="none"/>
+                    <svg class="project-icon" viewBox="0 0 200 200">
+                        <circle cx="100" cy="80" r="35" fill="#00d4ff"/>
+                        <ellipse cx="100" cy="145" rx="45" ry="35" fill="#00d4ff"/>
                     </svg>
                 </div>
                 <div class="project-content">
@@ -744,18 +885,8 @@
 
             <div class="project-card">
                 <div class="project-image">
-                    <svg class="project-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0096ff;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="50" y="50" width="100" height="100" rx="10" fill="url(#grad3)"/>
-                        <rect x="70" y="70" width="25" height="25" rx="3" fill="#0a0e27" opacity="0.4"/>
-                        <rect x="105" y="70" width="25" height="25" rx="3" fill="#0a0e27" opacity="0.4"/>
-                        <rect x="70" y="105" width="25" height="25" rx="3" fill="#0a0e27" opacity="0.4"/>
-                        <rect x="105" y="105" width="25" height="25" rx="3" fill="#0a0e27" opacity="0.4"/>
+                    <svg class="project-icon" viewBox="0 0 200 200">
+                        <rect x="50" y="50" width="100" height="100" rx="10" fill="#00d4ff"/>
                     </svg>
                 </div>
                 <div class="project-content">
@@ -771,18 +902,8 @@
 
             <div class="project-card">
                 <div class="project-image">
-                    <svg class="project-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0096ff;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="100" cy="100" r="60" fill="url(#grad4)"/>
-                        <path d="M 70 85 Q 75 75 85 80 T 100 85 T 115 80 Q 125 75 130 85" stroke="#0a0e27" stroke-width="4" fill="none"/>
-                        <circle cx="80" cy="95" r="4" fill="#0a0e27"/>
-                        <circle cx="120" cy="95" r="4" fill="#0a0e27"/>
-                        <path d="M 75 115 Q 100 130 125 115" stroke="#0a0e27" stroke-width="3" fill="none"/>
+                    <svg class="project-icon" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="60" fill="#00d4ff"/>
                     </svg>
                 </div>
                 <div class="project-content">
@@ -798,17 +919,9 @@
 
             <div class="project-card">
                 <div class="project-image">
-                    <svg class="project-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0096ff;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <polygon points="100,40 130,80 100,70 70,80" fill="url(#grad5)"/>
-                        <rect x="70" y="80" width="60" height="80" rx="5" fill="url(#grad5)"/>
-                        <rect x="85" y="95" width="30" height="20" rx="2" fill="#0a0e27" opacity="0.4"/>
-                        <rect x="85" y="125" width="30" height="20" rx="2" fill="#0a0e27" opacity="0.4"/>
+                    <svg class="project-icon" viewBox="0 0 200 200">
+                        <polygon points="100,40 130,80 100,70 70,80" fill="#00d4ff"/>
+                        <rect x="70" y="80" width="60" height="80" rx="5" fill="#00d4ff"/>
                     </svg>
                 </div>
                 <div class="project-content">
@@ -824,7 +937,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">Contattami</h2>
         <div class="contact-info">
@@ -840,19 +952,98 @@
                 <h3>📍 Location</h3>
                 <p>Palestrina, Roma</p>
             </div>
-            <div class="contact-card">
-                <h3>💼 Portfolio</h3>
-                <a href="https://spettro101.github.io/tizianomazzetti.github.io/" target="_blank" rel="noopener noreferrer">Vedi il mio portfolio completo</a>
+            <div class="contact-card" style="cursor: pointer;" onclick="openCVPreview()">
+                <h3>📄 Curriculum</h3>
+                <p style="color: #00d4ff;">Visualizza il mio CV</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Tiziano Mazzetti - AI Consultant | Tutti i diritti riservati</p>
     </footer>
 
-    <!-- Three.js Script -->
+    <div id="cvModal" class="cv-modal">
+        <div class="cv-modal-content">
+            <div class="cv-modal-header">
+                <h3>📄 Curriculum Vitae</h3>
+                <div class="cv-modal-buttons">
+                    <button class="cv-modal-btn download" onclick="downloadCV()">⬇️ Scarica PDF</button>
+                    <button class="cv-modal-btn close" onclick="closeCVPreview()">✕ Chiudi</button>
+                </div>
+            </div>
+            <div class="cv-preview-container">
+                <h1>TIZIANO MAZZETTI</h1>
+                
+                <div class="cv-info-section">
+                    <div>
+                        <h2>INFORMAZIONI PERSONALI</h2>
+                        <p>Giovane dinamico e volenteroso, con una forte passione per la tecnologia e l'intelligenza artificiale. Nativo digitale, apprendo rapidamente nuove competenze e mi adatto con facilità alle innovazioni del settore.</p>
+                        <p>Ho maturato esperienza come promotore e formatore nell'uso di dispositivi Web3, viaggiando in tutta Italia per supportare clienti e aziende nell'adozione di nuove tecnologie.</p>
+                        <p>Ottime capacità comunicative e predisposizione al contatto diretto con il cliente, maturate attraverso diverse esperienze come public speaker in eventi tematici sull'informatica.</p>
+                    </div>
+                    <div class="cv-contact-info">
+                        <h3>CONTATTI</h3>
+                        <p>📞 +39 333 120 3503</p>
+                        <p>📧 tizianomazzetti@gmail.com</p>
+                        <p>📍 Via Colle Carbone, snc<br>Palestrina, RM</p>
+                    </div>
+                </div>
+
+                <h2>SKILLS</h2>
+                <ul>
+                    <li>Tecnologia & AI</li>
+                    <li>Formazione Web3</li>
+                    <li>Metaverso & visori</li>
+                    <li>Avatar con AI</li>
+                    <li>Comunicazione & clienti</li>
+                    <li>Lavoro di squadra</li>
+                    <li>Studio AI & applicazioni</li>
+                </ul>
+
+                <h2>ESPERIENZE</h2>
+                
+                <h3>2025 - Tecnico informatico e assistenza telefonia | Tech&Toner</h3>
+                <ul>
+                    <li>Riparazione computer e assistenza su operatori Iliad, Optima e Tiscali</li>
+                    <li>Stoccaggio merci e gestione magazzino</li>
+                    <li>Contatto diretto col cliente e vendita prodotti</li>
+                </ul>
+
+                <h3>2023-2024 - Modellatore 3D | Fondazione Olitec</h3>
+                <ul>
+                    <li>Realizzazione di stanze virtuali metaversali usufruibili da visore</li>
+                    <li>Creazione di avatar dotati di intelligenza artificiale</li>
+                    <li>Ricerca e studio dell'applicazione di intelligenza artificiale in ambiti lavorativi</li>
+                    <li>Formazione del fruitore all'utilizzo pratico del visore</li>
+                </ul>
+
+                <h3>2018-2021 - Cuoco</h3>
+                <p>Esperienza anche in ambito alberghiero come aiuto cuoco, dove ho sviluppato un forte senso del lavoro di squadra e di supporto al team.</p>
+
+                <h2>FORMAZIONE</h2>
+                
+                <h3>02/2025 - 07/2025 | ENGIM LAZIO - ROMA</h3>
+                <p>Attestato di tecnico di rete</p>
+
+                <h3>11/2024 - 12/2024 | FONDAZIONE MONDO DIGITALE</h3>
+                <p>Attestato micro-professionalizzante di alfabetizzazione digitale</p>
+
+                <h3>2018-2021 | I.P.S. "MAFFEO PANTALEONI"</h3>
+                <p>Diploma di stato in accoglienza alberghiera</p>
+
+                <h2>STUDI AUTONOMI</h2>
+                <p>Ho approfondito autonomamente la tecnologia e l'intelligenza artificiale, studiando l'applicazione pratica di dispositivi Web3 e visori per la realtà virtuale. Ho sperimentato la realizzazione di stanze virtuali metaversali e la creazione di avatar con AI, sviluppando competenze pratiche attraverso ricerca e test diretti. Inoltre, ho affinato le mie capacità comunicative e relazionali, formandomi sull'interazione con il cliente e sul lavoro di squadra. Continuo a esplorare nuove applicazioni dell'AI in ambito lavorativo, con un approccio sperimentale.</p>
+
+                <h2>LINGUE</h2>
+                <ul>
+                    <li>Italiano (madrelingua)</li>
+                    <li>Inglese (Avanzato)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <script type="importmap">
         {
             "imports": {
@@ -865,15 +1056,9 @@
         import * as THREE from 'three';
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-        // Scene setup
         const scene = new THREE.Scene();
         
-        const camera = new THREE.PerspectiveCamera(
-            75,
-            1,
-            0.1,
-            1000
-        );
+        const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
         camera.position.set(0, 1.5, 3);
 
         const renderer = new THREE.WebGLRenderer({ 
@@ -889,7 +1074,6 @@
         renderer.setClearColor(0x000000, 0);
         container.appendChild(renderer.domElement);
 
-        // Lights
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
         directionalLight.position.set(2, 4, 5);
         scene.add(directionalLight);
@@ -897,7 +1081,6 @@
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
 
-        // Load model
         const loader = new GLTFLoader();
         let model = null;
 
@@ -906,7 +1089,6 @@
             function (gltf) {
                 model = gltf.scene;
                 
-                // Scala più grande per mobile
                 const isMobile = window.innerWidth <= 768;
                 const scale = isMobile ? 3.0 : 1.3;
                 
@@ -920,7 +1102,6 @@
             }
         );
 
-        // Animation
         function animate() {
             requestAnimationFrame(animate);
             
@@ -932,7 +1113,6 @@
         }
         animate();
 
-        // Responsive
         window.addEventListener('resize', () => {
             const width = container.clientWidth;
             const height = container.clientHeight;
@@ -940,11 +1120,43 @@
             camera.updateProjectionMatrix();
             renderer.setSize(width, height);
             
-            // Aggiorna scala su resize
             if (model) {
                 const isMobile = window.innerWidth <= 768;
                 const scale = isMobile ? 2.0 : 1.3;
                 model.scale.set(scale, scale, scale);
+            }
+        });
+    </script>
+
+    <script>
+        function openCVPreview() {
+            document.getElementById('cvModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCVPreview() {
+            document.getElementById('cvModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function downloadCV() {
+            const link = document.createElement('a');
+            link.href = 'Mazzetti Tiziano-CV-2025.pdf';
+            link.download = 'Mazzetti_Tiziano_CV_2025.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        document.getElementById('cvModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCVPreview();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCVPreview();
             }
         });
     </script>
